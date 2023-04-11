@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Nunito+Sans&display=swap" rel="stylesheet">
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Nunito+Sans&display=swap');
+
+        html, body {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            /* background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.5),
+            rgba(81, 81, 81, 0.5)); */
+            background: url('https://cdn.discordapp.com/attachments/1040266084550463498/1052906555399479316/hangman-background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #top{
+            display: flex;
+            justify-content: center;
+            padding: 30px 0px;
+        }
+        .top-title{
+            font-family: 'Bowlby One Sc';
+            font-size: 54px;
+            color: white;
+            /* border: 3px solid black; */
+            border-radius: 15px;
+            padding: 5px;
+            margin: 0;
+        }
+        #center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+        .hangpos{
+            margin: 0px 300px 0px 0px;
+            font-size: 30px;
+        }
+        .input-word{
+        }
+        .titre{
+            margin: 0;
+        }
+        .form{
+            margin: 10px 0px 0px 0px;
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .entree-text{
+            background: none;
+            color: rgb(0, 0, 0);
+            border: 1px solid black;
+            padding: 5px 8px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .boutton{
+            color: white;
+            background-color: rgb(255, 93, 93);
+            border: none;
+            border-radius: 2px;
+            padding: 5px 8px;
+            cursor: pointer;
+        }
+        .boutton:hover{
+            opacity: 0.5;
+        }
+        .footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .trys{
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: baseline;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .life{
+            margin: 0px 10px 0px 0px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .word-test{
+            margin: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        span{
+            color: rgb(96, 96, 96);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top">
+        <h1 class="top-title"><span>HANG</span>MAN</h1>
+    </div>
+
+    <div id="center">
+        <div class="first-center">
+            <pre class="hangpos">
+                    {{ range .Hangman }}
+                    {{.}}{{ end }}
+            </pre>
+        </div>
+
+        <div class="input-word">
+            <h1 class="titre">Tu as rentré : {{.Hword}}</h1>
+        <form class="form" action="" method="POST">
+            <input class="entree-text" type="text" name="Word">
+            <input class="boutton" type="submit" name="submit">
+        </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="trys">
+            <p class="word-test">
+            Tu as testé: {{.Wordtested}}
+            </p>
+            <p class="life">
+            &#128151 {{.Hp}}
+            </p>
+        </div>
+    </div>
+</body>
+</html>

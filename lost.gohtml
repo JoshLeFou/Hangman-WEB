@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vous avez perdu</title>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Nunito+Sans&display=swap');
+
+        html, body {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            background: url('https://cdn.discordapp.com/attachments/1040266084550463498/1052906555399479316/hangman-background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #top{
+            display: flex;
+            justify-content: center;
+            padding: 30px 0px;
+        }
+        .top-title{
+            font-family: 'Bowlby One Sc';
+            color: rgb(255, 12, 12);
+            border-radius: 15px;
+            padding: 5px;
+            margin: 0;
+        }
+        #center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+        .hangpos{
+            margin: 0px 300px 0px 0px;
+            font-size: 30px;
+        }
+        button{
+            font-size: 20px;
+            padding: 5px 20px;
+            color: white;
+            border: 10px ridge rgba(161, 217, 222, 0.6);
+            font-family: 'Bowlby One Sc';
+            text-decoration: none;
+            transition: all .5s;
+        }
+        button:hover{
+            opacity: 0.6;
+        }
+        button:active {
+            box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.6);
+        }
+        .b1{
+            background-color: rgb(33, 173, 73);
+        }
+        .text{
+            margin: 0px 0px 8px 0px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .trys{
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: baseline;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .life{
+            margin: 0px 10px 0px 0px;
+            font-weight: bold;
+            font-size: 20px;
+            width: auto;
+        }
+        .word-test{
+            margin: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .back-menu{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <h1 class="top-title">Vous avez perdu !</h1>
+    </div>
+
+    <div id="center">
+        <div class="first-center">
+            <pre class="hangpos">
+                    {{ range .Hangman }}
+                    {{.}}{{ end }}
+            </pre>
+        </div>
+
+        <div class="word-to-find">
+            <p class="text">Le mot était : {{.Word}}</p>
+            <p class="text">vous aviez trouvé : {{.Hword}}</p>
+        </div>
+
+        <div class="back-menu">
+            <form action="/lost" method="POST">
+            <button class="b1" name="restart" value="restart">Recommencer une partie</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <div class="trys">
+                <p class="word-test">
+                Tu as testé: {{.Wordtested}}
+                </p>
+                <p class="life">
+                &#128151 {{.Hp}}
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
